@@ -3,7 +3,10 @@
     "allow": [
       "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --yes)",
       "Read(//c/Users/tanna/**)",
-      "Bash(npx create-next-app@latest myportfolio --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --yes)"
+      "Bash(npx create-next-app@latest myportfolio --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(npm run *)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(taskkill /PID 58152 /F)"
     ]
   }
 }

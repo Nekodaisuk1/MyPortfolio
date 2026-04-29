@@ -1,0 +1,44 @@
+[
+  {
+    "title": "TaskFlow",
+    "description": "チームのタスク管理を効率化するWebアプリ。リアルタイム同期対応。",
+    "tags": ["Next.js", "Firebase", "TypeScript"],
+    "url": "https://github.com",
+    "featured": true
+  },
+  {
+    "title": "DevNote",
+    "description": "Markdownで書けるシンプルな技術メモアプリ。タグ検索・全文検索に対応。",
+    "tags": ["React", "Supabase", "TailwindCSS"],
+    "url": "https://github.com",
+    "featured": true
+  },
+  {
+    "title": "PriceTracker",
+    "description": "ECサイトの価格変動を監視してLINEに通知するスクレイピングBot。",
+    "tags": ["Python", "LINE API", "Heroku"],
+    "url": "https://github.com",
+    "featured": true
+  },
+  {
+    "title": "Weather Dashboard",
+    "description": "天気APIを使った地域別天気表示ダッシュボード。グラフで視覚化。",
+    "tags": ["Vue.js", "Chart.js", "OpenWeatherAPI"],
+    "url": "https://github.com",
+    "featured": false
+  },
+  {
+    "title": "CLI Todo",
+    "description": "ターミナルで動くTodoツール。SQLiteで永続化、タグ管理に対応。",
+    "tags": ["Go", "SQLite"],
+    "url": "https://github.com",
+    "featured": false
+  },
+  {
+    "title": "AutoReport",
+    "description": "Googleスプレッドシートのデータを自動集計してPDFレポートを生成するツール。",
+    "tags": ["Python", "Google API", "ReportLab"],
+    "url": "https://github.com",
+    "featured": false
+  }
+]
