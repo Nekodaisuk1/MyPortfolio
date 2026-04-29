@@ -2,20 +2,15 @@
 
 import { useState, useMemo } from "react";
 import { WorkCard } from "./WorkCard";
+import { WorkModal } from "./WorkModal";
 import worksData from "../data/works.json";
-
-type Work = {
-  title: string;
-  description: string;
-  tags: string[];
-  url: string;
-  featured: boolean;
-};
+import type { Work } from "../types/work";
 
 const works: Work[] = worksData;
 
 export function Works() {
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [selectedWork, setSelectedWork] = useState<Work | null>(null);
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -32,50 +27,63 @@ export function Works() {
   }, [activeTag]);
 
   return (
-    <section id="works" className="py-24 border-t border-[#e8e8e8]">
-      <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-sm font-medium text-[#CD622C] uppercase tracking-widest mb-10">
-          Works
-        </h2>
+    <>
+      <section id="works" className="py-24 border-t border-[#e8e8e8]">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-sm font-medium text-[#CD622C] uppercase tracking-widest mb-10">
+            Works
+          </h2>
 
-        <div className="flex flex-wrap gap-2 mb-10">
-          <button
-            onClick={() => setActiveTag(null)}
-            className={`text-[12px] px-3 py-1 border transition-colors duration-150 ${
-              activeTag === null
-                ? "border-[#111111] text-[#111111]"
-                : "border-[#e8e8e8] text-[#666666] hover:border-[#111111] hover:text-[#111111]"
-            }`}
-          >
-            All
-          </button>
-          {allTags.map((tag) => (
+          <div className="flex flex-wrap gap-2 mb-10">
             <button
-              key={tag}
-              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+              onClick={() => setActiveTag(null)}
               className={`text-[12px] px-3 py-1 border transition-colors duration-150 ${
-                activeTag === tag
-                  ? "border-[#CD622C] text-[#CD622C]"
+                activeTag === null
+                  ? "border-[#111111] text-[#111111]"
                   : "border-[#e8e8e8] text-[#666666] hover:border-[#111111] hover:text-[#111111]"
               }`}
             >
-              {tag}
+              All
             </button>
-          ))}
-        </div>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+                className={`text-[12px] px-3 py-1 border transition-colors duration-150 ${
+                  activeTag === tag
+                    ? "border-[#CD622C] text-[#CD622C]"
+                    : "border-[#e8e8e8] text-[#666666] hover:border-[#111111] hover:text-[#111111]"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {filtered.map((work) => (
-            <WorkCard key={work.title} work={work} />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {filtered.map((work) => (
+              <WorkCard
+                key={work.title}
+                work={work}
+                onClick={() => setSelectedWork(work)}
+              />
+            ))}
+          </div>
 
-        {filtered.length === 0 && (
-          <p className="text-[13px] text-[#666666] text-center py-12">
-            該当する作品がありません
-          </p>
-        )}
-      </div>
-    </section>
+          {filtered.length === 0 && (
+            <p className="text-[13px] text-[#666666] text-center py-12">
+              該当する作品がありません
+            </p>
+          )}
+        </div>
+      </section>
+
+      {selectedWork && (
+        <WorkModal
+          work={selectedWork}
+          onClose={() => setSelectedWork(null)}
+        />
+      )}
+    </>
   );
 }

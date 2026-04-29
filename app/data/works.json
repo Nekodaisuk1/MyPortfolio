@@ -4,41 +4,89 @@
     "description": "チームのタスク管理を効率化するWebアプリ。リアルタイム同期対応。",
     "tags": ["Next.js", "Firebase", "TypeScript"],
     "url": "https://github.com",
-    "featured": true
+    "featured": true,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "複数人で使えるタスク管理Webアプリ。Firebaseのリアルタイムデータベースを使い、チームメンバー間でタスクの状態をリアルタイムに同期する。",
+    "challenge": "複数ユーザーが同時にタスクを編集した際に競合が発生し、データの整合性が保てない問題があった。",
+    "solution": "Firebaseのトランザクション処理とオプティミスティックUIを組み合わせ、競合を検知して自動マージする仕組みを実装した。",
+    "role": "設計・フロントエンド実装・Firebase構築をひとりで担当。UIデザインからデプロイまで一貫して対応。",
+    "screenshots": ["", "", ""],
+    "demoUrl": "https://example.com"
   },
   {
     "title": "DevNote",
     "description": "Markdownで書けるシンプルな技術メモアプリ。タグ検索・全文検索に対応。",
     "tags": ["React", "Supabase", "TailwindCSS"],
     "url": "https://github.com",
-    "featured": true
+    "featured": true,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "エンジニア向けのメモアプリ。Markdownエディタとリアルタイムプレビューを備え、Supabaseで認証・データ永続化を実現。",
+    "challenge": "全文検索の速度と精度が課題。メモが増えるにつれてクライアントサイド検索では遅くなった。",
+    "solution": "SupabaseのPostgreSQL全文検索インデックスをカスタム設定し、日本語トークナイザを適用することで検索速度を大幅に改善した。",
+    "role": "個人開発。React/Supabaseの選定から実装・デプロイまで全工程を担当。",
+    "screenshots": ["", "", ""],
+    "demoUrl": "https://example.com"
   },
   {
     "title": "PriceTracker",
     "description": "ECサイトの価格変動を監視してLINEに通知するスクレイピングBot。",
     "tags": ["Python", "LINE API", "Heroku"],
     "url": "https://github.com",
-    "featured": true
+    "featured": true,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "Amazon・楽天の商品ページを定期的にスクレイピングし、設定した閾値を下回った場合にLINE通知を送るBot。Heroku Schedulerで1日2回自動実行。",
+    "challenge": "サイト側のBot対策でスクレイピングがブロックされるケースが頻発した。",
+    "solution": "User-Agentのローテーションとリクエスト間隔のランダム化、さらにセッション管理を導入してブロックを回避した。",
+    "role": "個人開発。Pythonスクリプト実装・Herokuデプロイ・LINE Bot設定を担当。",
+    "screenshots": ["", ""],
+    "demoUrl": ""
   },
   {
     "title": "Weather Dashboard",
     "description": "天気APIを使った地域別天気表示ダッシュボード。グラフで視覚化。",
     "tags": ["Vue.js", "Chart.js", "OpenWeatherAPI"],
     "url": "https://github.com",
-    "featured": false
+    "featured": false,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "OpenWeatherAPIを使い、地域名で検索して1週間の天気予報と気温推移グラフを表示するSPAダッシュボード。",
+    "challenge": "APIのレスポンスフォーマットが複雑で、フロントでのデータ変換コードが肥大化した。",
+    "solution": "変換ロジックをComposablesに切り出し、テスト可能な純粋関数として管理することでコードの見通しを改善した。",
+    "role": "個人開発。Vue 3 Composition APIの学習目的で実装。",
+    "screenshots": ["", ""],
+    "demoUrl": "https://example.com"
   },
   {
     "title": "CLI Todo",
     "description": "ターミナルで動くTodoツール。SQLiteで永続化、タグ管理に対応。",
     "tags": ["Go", "SQLite"],
     "url": "https://github.com",
-    "featured": false
+    "featured": false,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "Goで書いたシンプルなCLI Todoアプリ。タスクの追加・完了・削除をコマンドで操作でき、SQLiteでローカル永続化。タグによる絞り込みも対応。",
+    "challenge": "Goのモジュール構成とsqlite3のCGOバインディング設定に苦労した。",
+    "solution": "Pure Go実装のSQLiteドライバ（modernc/sqlite）を採用することでCGO不要にし、クロスコンパイルを可能にした。",
+    "role": "個人開発。Go学習を兼ねて実装。CLIフラグ設計・DB設計・テスト実装を担当。",
+    "screenshots": [""],
+    "demoUrl": ""
   },
   {
     "title": "AutoReport",
     "description": "Googleスプレッドシートのデータを自動集計してPDFレポートを生成するツール。",
     "tags": ["Python", "Google API", "ReportLab"],
     "url": "https://github.com",
-    "featured": false
+    "featured": false,
+    "thumbnail": "",
+    "mainImage": "",
+    "summary": "Google Sheets APIでデータを取得し、集計・グラフ化してPDFレポートを自動生成するPythonスクリプト。月次レポート作業を自動化した。",
+    "challenge": "ReportLabでの日本語フォント表示と、複雑なレイアウトの実現が難しかった。",
+    "solution": "IPAフォントを埋め込み対応させ、レイアウトをFlowableコンポーネントで構造化することで柔軟なPDF生成を実現した。",
+    "role": "個人開発。要件定義・実装・運用まで担当。実際に自分のゼミのレポート作成に活用。",
+    "screenshots": ["", ""],
+    "demoUrl": ""
   }
 ]
