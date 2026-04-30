@@ -3,12 +3,11 @@
 import { useState, useMemo } from "react";
 import { WorkCard } from "./WorkCard";
 import { WorkModal } from "./WorkModal";
-import worksData from "../data/works.json";
 import type { Work } from "../types/work";
 
-const works: Work[] = worksData;
+type Props = { works: Work[] };
 
-export function Works() {
+export function Works({ works }: Props) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [selectedWork, setSelectedWork] = useState<Work | null>(null);
 
@@ -16,7 +15,7 @@ export function Works() {
     const tags = new Set<string>();
     works.forEach((w) => w.tags.forEach((t) => tags.add(t)));
     return Array.from(tags);
-  }, []);
+  }, [works]);
 
   const filtered = useMemo(() => {
     const sorted = [...works].sort((a, b) =>
@@ -24,7 +23,7 @@ export function Works() {
     );
     if (!activeTag) return sorted;
     return sorted.filter((w) => w.tags.includes(activeTag));
-  }, [activeTag]);
+  }, [activeTag, works]);
 
   return (
     <>

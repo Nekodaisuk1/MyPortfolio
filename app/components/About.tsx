@@ -1,6 +1,6 @@
-import { profile } from "../data/profile";
+type Props = { about: string };
 
-export function About() {
+export function About({ about }: Props) {
   return (
     <section id="about" className="py-24 border-t border-[#e8e8e8]">
       <div className="max-w-5xl mx-auto px-6">
@@ -8,7 +8,7 @@ export function About() {
           About
         </h2>
         <p className="text-[15px] text-[#444444] leading-[1.9] max-w-2xl whitespace-pre-line">
-          {profile.about}
+          {about}
         </p>
       </div>
     </section>

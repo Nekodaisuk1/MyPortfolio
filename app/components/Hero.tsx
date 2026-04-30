@@ -1,6 +1,8 @@
-import { profile } from "../data/profile";
+import type { Profile } from "../types/profile";
 
-export function Hero() {
+type Props = { profile: Profile };
+
+export function Hero({ profile }: Props) {
   return (
     <section id="hero" className="pt-32 pb-24">
       <div className="max-w-5xl mx-auto px-6">

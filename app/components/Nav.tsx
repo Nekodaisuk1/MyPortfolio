@@ -1,7 +1,5 @@
 "use client";
 
-import { profile } from "../data/profile";
-
 const links = [
   { label: "Works", href: "#works" },
   { label: "Skills", href: "#skills" },
@@ -9,7 +7,9 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function Nav() {
+type Props = { name: string };
+
+export function Nav({ name }: Props) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#e8e8e8]">
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -17,7 +17,7 @@ export function Nav() {
           href="#hero"
           className="text-[14px] font-semibold text-[#111111] tracking-tight"
         >
-          {profile.name}
+          {name}
         </a>
         <div className="flex gap-6">
           {links.map((link) => (
