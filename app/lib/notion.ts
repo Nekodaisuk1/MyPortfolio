@@ -107,7 +107,8 @@ export async function fetchProfile(): Promise<Profile | null> {
  *   URL (url), Featured (checkbox), Published (checkbox),
  *   Thumbnail (url), MainImage (url), Summary (rich_text),
  *   Challenge (rich_text), Solution (rich_text), Role (rich_text),
- *   Screenshots (rich_text — カンマ区切りURLリスト), DemoUrl (url)
+ *   Screenshots (rich_text — カンマ区切りURLリスト), DemoUrl (url),
+ *   Awards (rich_text — 改行区切りで複数入力可)
  */
 export async function fetchWorks(): Promise<Work[] | null> {
   if (!notion || !process.env.NOTION_WORKS_DB_ID) return null;
@@ -135,6 +136,13 @@ export async function fetchWorks(): Promise<Work[] | null> {
               .map((s) => s.trim())
               .filter(Boolean)
           : [];
+        const awardsRaw = getRichText(p["Awards"]);
+        const awards = awardsRaw
+          ? awardsRaw
+              .split("\n")
+              .map((s) => s.trim())
+              .filter(Boolean)
+          : [];
         return {
           title: getTitle(p["Title"]),
           description: getRichText(p["Description"]),
@@ -149,6 +157,7 @@ export async function fetchWorks(): Promise<Work[] | null> {
           role: getRichText(p["Role"]),
           screenshots,
           demoUrl: getUrl(p["DemoUrl"]),
+          awards,
         };
       });
   } catch (err) {

@@ -37,11 +37,18 @@ export function WorkCard({ work, onClick }: Props) {
           <h3 className="text-[14px] font-semibold text-[#111111] group-hover:text-[#CD622C] transition-colors duration-200">
             {work.title}
           </h3>
-          {work.featured && (
-            <span className="text-[10px] text-[#CD622C] font-medium ml-2 shrink-0 mt-0.5">
-              Featured
-            </span>
-          )}
+          <div className="flex items-center gap-1.5 ml-2 shrink-0 mt-0.5">
+            {work.awards && work.awards.length > 0 && (
+              <span className="text-[10px]" title={work.awards.join("\n")}>
+                🏆
+              </span>
+            )}
+            {work.featured && (
+              <span className="text-[10px] text-[#CD622C] font-medium">
+                Featured
+              </span>
+            )}
+          </div>
         </div>
         <p className="text-[12px] text-[#666666] leading-relaxed mb-3">
           {work.description}

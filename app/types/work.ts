@@ -12,4 +12,5 @@ export type Work = {
   role?: string;
   screenshots?: string[];
   demoUrl?: string;
+  awards?: string[];
 };

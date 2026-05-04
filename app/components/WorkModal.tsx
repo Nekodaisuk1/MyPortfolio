@@ -159,6 +159,23 @@ export function WorkModal({ work, onClose }: Props) {
             </section>
           )}
 
+          {/* 受賞歴 */}
+          {work.awards && work.awards.length > 0 && (
+            <section className="mb-6">
+              <h3 className="text-[11px] font-medium text-[#CD622C] uppercase tracking-widest mb-3">
+                Awards
+              </h3>
+              <ul className="flex flex-col gap-2">
+                {work.awards.map((award, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[14px] text-[#444444]">
+                    <span className="mt-0.5 shrink-0">🏆</span>
+                    <span>{award}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           {/* 技術スタック */}
           <section className="mb-8">
             <h3 className="text-[11px] font-medium text-[#CD622C] uppercase tracking-widest mb-3">
