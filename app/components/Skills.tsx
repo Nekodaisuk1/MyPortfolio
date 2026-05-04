@@ -2,20 +2,37 @@ type Props = { skills: string[] };
 
 export function Skills({ skills }: Props) {
   return (
-    <section id="skills" className="py-24 border-t border-[#e8e8e8]">
+    <section id="skills" className="py-20 border-t border-[#D4D0C8]">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-sm font-medium text-[#CD622C] uppercase tracking-widest mb-10">
+        <div className="flex items-center gap-2.5 text-[10px] text-[#9A9790] tracking-[0.14em] mb-10">
+          <span className="inline-block w-4 h-px bg-[#CD622C]" />
           Skills
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <span
-              key={skill}
-              className="text-[13px] text-[#111111] border border-[#e8e8e8] px-3 py-1.5"
-            >
-              {skill}
-            </span>
-          ))}
+        </div>
+
+        <div className="flex gap-12 items-start">
+          {/* Vertical aside text */}
+          <div
+            className="text-[52px] font-light text-[#D4D0C8] leading-none select-none shrink-0"
+            style={{
+              fontFamily: "var(--font-serif, 'Noto Serif JP', serif)",
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+            }}
+          >
+            Skills
+          </div>
+
+          {/* Grid */}
+          <div className="flex-1 flex flex-wrap border-t border-l border-[#D4D0C8]">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="text-[13px] text-[#4A4740] px-5 py-3 border-r border-b border-[#D4D0C8] hover:bg-[#CD622C] hover:text-white hover:border-[#CD622C] transition-all duration-150 cursor-default"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

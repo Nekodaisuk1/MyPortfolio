@@ -1,18 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  --bg: #F2EFE8;
+  --bg-alt: #E9E5DC;
+  --ink: #0F0D09;
+  --ink-mid: #4A4740;
+  --ink-muted: #9A9790;
+  --rule: #D4D0C8;
+  --orange: #CD622C;
 }
 
 body {
-  background: #ffffff;
-  color: #111111;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.font-serif {
+  font-family: 'Noto Serif JP', Georgia, serif;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker 24s linear infinite;
 }

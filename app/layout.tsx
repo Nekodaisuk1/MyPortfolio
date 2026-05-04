@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Inter, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Tanna — Portfolio",
@@ -14,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body className={`${inter.variable} ${notoSerifJP.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
