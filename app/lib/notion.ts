@@ -6,6 +6,7 @@ import type {
   DataSourceObjectResponse,
 } from "@notionhq/client";
 import type { Profile } from "../types/profile";
+import type { ProfileItem } from "../types/profile-item";
 import type { Work } from "../types/work";
 
 const notion =
@@ -46,6 +47,11 @@ function getMultiSelect(prop: NotionProperty | undefined): string[] {
     return prop.multi_select.map((s) => s.name);
   }
   return [];
+}
+
+function getNumber(prop: NotionProperty | undefined): number {
+  if (prop?.type === "number") return prop.number ?? 0;
+  return 0;
 }
 
 function getCheckbox(prop: NotionProperty | undefined): boolean {
@@ -98,6 +104,37 @@ export async function fetchProfile(): Promise<Profile | null> {
     };
   } catch (err) {
     console.error("[Notion] fetchProfile failed:", err);
+    return null;
+  }
+}
+
+/**
+ * Profile Items DBからプロフィール項目一覧を取得する。
+ * NOTION_PROFILE_ITEMS_DB_ID が未設定の場合は null を返す。
+ *
+ * Notionデータベースのプロパティ名:
+ *   Label (title), Value (rich_text), Order (number)
+ */
+export async function fetchProfileItems(): Promise<ProfileItem[] | null> {
+  if (!notion || !process.env.NOTION_PROFILE_ITEMS_DB_ID) return null;
+  try {
+    const response = await notion.dataSources.query({
+      data_source_id: process.env.NOTION_PROFILE_ITEMS_DB_ID,
+      sorts: [{ property: "Order", direction: "ascending" }],
+    });
+    return response.results
+      .filter(isFullPageObject)
+      .map((page) => {
+        const p = page.properties;
+        return {
+          label: getTitle(p["Label"]),
+          value: getRichText(p["Value"]),
+          order: getNumber(p["Order"]),
+        };
+      })
+      .filter((item) => item.label);
+  } catch (err) {
+    console.error("[Notion] fetchProfileItems failed:", err);
     return null;
   }
 }
