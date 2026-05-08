@@ -9,6 +9,10 @@ export const profile = {
 特定の技術領域に縛られず、必要なものを必要な分だけ学びながら、
 ユーザーに価値を届けるプロダクト開発に興味があります。
 インターンを通じて、実際の開発現場で経験を積みたいと考えています。`,
+  birthday: "",
+  school: "",
+  currentLocation: "",
+  hometown: "",
   skills: [
     "TypeScript",
     "JavaScript",
