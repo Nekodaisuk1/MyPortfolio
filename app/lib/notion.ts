@@ -91,6 +91,10 @@ export async function fetchProfile(): Promise<Profile | null> {
       github: getUrl(p["GitHub"]),
       email: getEmail(p["Email"]),
       skills: getMultiSelect(p["Skills"]),
+      birthday: getRichText(p["Birthday"]) || undefined,
+      school: getRichText(p["School"]) || undefined,
+      currentLocation: getRichText(p["CurrentLocation"]) || undefined,
+      hometown: getRichText(p["Hometown"]) || undefined,
     };
   } catch (err) {
     console.error("[Notion] fetchProfile failed:", err);

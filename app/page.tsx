@@ -28,7 +28,13 @@ export default async function Home() {
       <Ticker skills={profile.skills} />
       <Works works={works} />
       <Skills skills={profile.skills} />
-      <About about={profile.about} />
+      <About
+        about={profile.about}
+        birthday={profile.birthday}
+        school={profile.school}
+        currentLocation={profile.currentLocation}
+        hometown={profile.hometown}
+      />
       <Contact github={profile.github} email={profile.email} />
       <footer className="border-t border-[#D4D0C8]">
         <div className="max-w-5xl mx-auto px-6 py-7 flex items-center justify-between">

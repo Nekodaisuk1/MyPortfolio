@@ -6,4 +6,8 @@ export type Profile = {
   email: string;
   about: string;
   skills: string[];
+  birthday?: string;
+  school?: string;
+  currentLocation?: string;
+  hometown?: string;
 };
